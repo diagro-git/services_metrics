@@ -2,23 +2,23 @@ version: '3.5'
 
 networks:
  metrics-network:
-    name:metrics-network
+    name: metrics-network
 
 services:
  metrics:
     build: ./development
-    image:metrics_service:dev
+    image: metrics_service:dev
     expose:
       - 80
     networks:
-      -metrics-network
+      - metrics-network
     restart: always
     volumes:
-      - /home/diagro/servicemetrics:/diagro
+      - /home/diagro/service_metrics:/diagro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routersmetrics_service.entrypoints=websecure"
-      - "traefik.http.routersmetrics_service.rule=Host(metrics.diagro.dev`)"
-      - "traefik.http.routersmetrics_service.tls=true"
-      - "traefik.http.routersmetrics_service.tls.certresolver=production"
-      - "traefik.docker.networkmetrics-network"
+      - "traefik.http.routers.metrics_service.entrypoints=websecure"
+      - "traefik.http.routers.metrics_service.rule=Host(`metrics.diagro.dev`)"
+      - "traefik.http.routers.metrics_service.tls=true"
+      - "traefik.http.routers.metrics_service.tls.certresolver=production"
+      - "traefik.docker.network=metrics-network"

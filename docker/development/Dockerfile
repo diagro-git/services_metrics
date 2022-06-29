@@ -1,7 +1,7 @@
-FROM php:8.1-fpm-buster
+FROM php:8.1-fpm
 
 RUN apt-get update
-RUN apt install -y g++ libicu-dev libpq-dev libzip-dev zip zlib1g-dev curl
+RUN apt install -y --fix-missing g++ libicu-dev libpq-dev libzip-dev zip zlib1g-dev curl nano htop git
 RUN docker-php-ext-install intl opcache pdo pdo_mysql
 
 RUN apt-get install -y nginx
