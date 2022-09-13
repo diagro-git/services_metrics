@@ -23,12 +23,6 @@ class MetricController extends Controller
 
         $m = new Metric($data);
         $m->saveOrFail();
-        logger()->info(sprintf("Request %s executed in %.5f seconds.", $m->request_id, $m->timeInSeconds()), [
-            'class' => __CLASS__,
-            'function' => __FUNCTION__,
-            'request_uri' => $m->request['uri'],
-            'request_host' => $m->request['host'],
-        ]);
     }
 
 }
